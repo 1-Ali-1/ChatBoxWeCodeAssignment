@@ -47,8 +47,13 @@ class _ChatScreenState extends State<ChatScreen> {
                                 itemCount: _users.length,
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
+
                                     child: Text(_users[index] ?? 'no name'),
+
+
+                                  ///////////  delete by ali
                                     onTap: () async {
+
                                       Iterable<DocumentSnapshot<Object?>>
                                           toDelete;
                                       toDelete = _docs.where(
@@ -62,6 +67,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                         print("success");
                                       });
                                     },
+                                    /////////// delete by ali
+
+
                                   );
                                 }),
                           );
@@ -87,9 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: ElevatedButton(
                           onPressed: () async {
                             await FirebaseFirestore.instance
-                                // .collection('users')
-                                // .doc(_authProvider.theUser!.uid)
-                                // .set(_generalUser.toMap(), SetOptions(merge: true));
+                               
                                 .collection('chat')
                                 .add({
                               'msg': msg.value.text,
